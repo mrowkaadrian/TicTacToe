@@ -6,9 +6,9 @@
 class Game {
 private:
 	// Zmienne prywatne
-	Board _board;
-	Player _player;
-	Computer _computer;
+	Board * _board = new Board();
+	Player * _player = new Player();
+	Computer * _computer = new Computer();
 public:
 	// Konstruktor, destruktor
 	Game();
