@@ -5,7 +5,7 @@
 #include <ctime>
 
 Game::Game() {
-
+	start_game();
 }
 
 Game::~Game() {
@@ -23,19 +23,29 @@ void Game::start_game() { // inicjalizacja gry (wybranie kto zaczyna, przypisani
 	}
 
 	this->_player->assign_board(this->_board);
+
+	game_loop();
 }
 
 void Game::game_loop() { // petla gry: X - gracz, O - komputer
 	bool exit = false;
 	int score = 0; // 0 - remis, 1 - gracz wygral, 2 - komputer wygral
 
+	if (_startingPlayer)
+		std::cout << "Ty zaczynasz!\n\n";
+	else
+		std::cout << "Zaczyna komputer!\n\n";
+
 	while (!exit) {
+
+		_board->draw_board();
 
 		if (_startingPlayer == true) { // tura gracza
 			_player->add_symbol();
 		}
 		else { // tura komputera
-			_computer->add_symbol();
+			//_computer->add_symbol();
+
 		}
 
 		if (check_score())

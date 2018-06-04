@@ -1,12 +1,10 @@
 #include <iostream>
-#include "board.h"
+#include "game.h"
 
 int main() {
 	char stop;
 	// main
-	Board board;
-	board.erase_board();
-	board.draw_board();
+	Game * game = new Game();
 	// stop
 	std::cin >> stop;
 }

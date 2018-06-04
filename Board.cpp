@@ -2,7 +2,7 @@
 #include <iostream>
 
 Board::Board() {
-
+	erase_board();
 }
 
 Board::~Board() {

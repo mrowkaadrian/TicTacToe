@@ -27,7 +27,7 @@ void Player::add_symbol() {
 
 	while (!inserted) {
 		while (!correct) {
-			std::cout << "Gdzie chcesz wstawiæ 'X'?\nPodaj numer od 1 do 9: ";
+			std::cout << "Gdzie chcesz wstawic 'X'?\nPodaj numer od 1 do 9: ";
 			std::cin >> number;
 			if (std::cin.good() && number > 0 && number < 10)
 				correct = true;
