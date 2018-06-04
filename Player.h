@@ -18,4 +18,6 @@ public:
 	void assign_board(Board * board); //dopisz plansze do gracza w trakcie gry
 	void set_name();
 	void add_symbol();
+
+	Board * get_board();
 };

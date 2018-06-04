@@ -15,7 +15,6 @@ public:
 	Board();
 	~Board();
 // Funkcje klasy
-	void load_board(); //troche glupie
 	void erase_board(); 
 
 	void draw_board();

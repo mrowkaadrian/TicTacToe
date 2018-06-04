@@ -23,13 +23,14 @@ void Game::start_game() { // inicjalizacja gry (wybranie kto zaczyna, przypisani
 	}
 
 	this->_player->assign_board(this->_board);
+	this->_computer->assign_board(this->_board);
 
 	game_loop();
 }
 
 void Game::game_loop() { // petla gry: X - gracz, O - komputer
 	bool exit = false;
-	int score = 0; // 0 - remis, 1 - gracz wygral, 2 - komputer wygral
+	int winner;
 
 	if (_startingPlayer)
 		std::cout << "Ty zaczynasz!\n\n";
@@ -44,18 +45,29 @@ void Game::game_loop() { // petla gry: X - gracz, O - komputer
 			_player->add_symbol();
 		}
 		else { // tura komputera
-			//_computer->add_symbol();
-
+			_computer->add_symbol();
 		}
 
-		if (check_score())
+		if (check_score(winner))
 			exit = true;
+
+		std::cout << ". . . wcisnij ENTER, aby kontynuowac . . .\n";
+		std::cin.get();
+
+		system("cls");
 
 		_startingPlayer = !_startingPlayer; // zmiana tury
 	}
+
+	system("cls");
+	_board->draw_board();
+	print_score(winner);
+
+
+	// koniec gry - wyswietlenie wynikow
 }
 
-bool Game::check_score() { // Funkcja sprawdza, czy ktos wygral, a jesli nie, to czy nadal jest miejsce na planszy. jeœli ktorys z przypadkow zostal spelniony, zatrzymuje gre i printuje wynik.
+bool Game::check_score(int & winner) { // Funkcja sprawdza, czy ktos wygral, a jesli nie, to czy nadal jest miejsce na planszy. jeœli ktorys z przypadkow zostal spelniony, zatrzymuje gre i printuje wynik.
 
 	// uwaga, to bedzie biedacko napisane, ale nie mam w tej chwili weny algorytmowej, ¿eby zwiezlej to napisac (jakis pattern matching bylby potrzebny)
 	bool p_won = false, c_won = false, draw = false;
@@ -95,6 +107,14 @@ bool Game::check_score() { // Funkcja sprawdza, czy ktos wygral, a jesli nie, to
 	if (p_won || c_won || draw)
 		stop_game = true;
 
+	// ustawienie wyniku na adresie 'inta' podanego przy wywolaniu funkcji (0/1/2) 
+	if (p_won)
+		winner = 1;
+	if (c_won)
+		winner = 2;
+	if (draw)
+		winner = 0;
+
 	return stop_game; // false - gra powinna nadal trwac / true - gra powinna sie zakonczyc
 }
 
@@ -106,8 +126,4 @@ void Game::print_score(int number) { // 0 = remis, 1 = gracz wygral, 2 = kompute
 	} else if (number == 2) {
 		std::cout << "Przegrales, postaraj sie bardziej nastepnym razem...\n";
 	}
-}
-
-void Game::exit() {
-
 }

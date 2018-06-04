@@ -12,7 +12,7 @@ Board::~Board() {
 void Board::erase_board() {
 	for (int i = 0; i < 3; ++i)
 		for (int j = 0; j < 3; ++j)
-			this->_field[i][j] = Empty;
+			set_symbol(i, j, Empty);
 }
 
 void Board::draw_board() {
@@ -53,5 +53,5 @@ char Board::get_char(int x, int y) {
 }
 
 void Board::set_symbol(int x, int y, Symbols s) {
-	_field[x][y] = s;
+	this->_field[x][y] = s;
 }

@@ -127,3 +127,7 @@ void Player::assign_board(Board * board) {
 
 	this->_board = board;
 }
+
+Board * Player::get_board() {
+	return this->_board;
+}

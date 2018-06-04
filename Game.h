@@ -17,7 +17,6 @@ public:
 	// Funkcje klasy
 	void start_game();
 	void game_loop();
-	bool check_score();
+	bool check_score(int & winner);
 	void print_score(int);
-	void exit();
 };
