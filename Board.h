@@ -19,5 +19,7 @@ public:
 	void erase_board(); 
 
 	void draw_board();
+
 	char get_char(int, int);
+	void set_symbol(int, int, Symbols);
 };

@@ -9,6 +9,7 @@ private:
 	Board * _board = new Board();
 	Player * _player = new Player();
 	Computer * _computer = new Computer();
+	bool _startingPlayer;
 public:
 	// Konstruktor, destruktor
 	Game();

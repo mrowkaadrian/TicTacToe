@@ -41,6 +41,7 @@ void Board::draw_board() {
 char Board::get_char(int x, int y) {
 	if (x < 0 || x > 2 || y < 0 || y > 2)
 		return ' ';
+
 	if (_field[x][y] == Empty)
 		return ' ';
 	else if (_field[x][y] == Cross)
@@ -49,4 +50,8 @@ char Board::get_char(int x, int y) {
 		return 'O';
 
 	return ' ';
+}
+
+void Board::set_symbol(int x, int y, Symbols s) {
+	_field[x][y] = s;
 }
